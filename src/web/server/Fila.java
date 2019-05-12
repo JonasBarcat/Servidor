@@ -11,7 +11,7 @@ package web.server;
  */
 public class Fila {
     
-    private Item primero;
+    private Peticion primero;
 
     
     public Fila() {
@@ -19,17 +19,17 @@ public class Fila {
     
     
     
-    public void enFila(Item web){
-        Item aux=web;
+    public void enFila(Peticion web){
+        Peticion aux=web;
         aux.setSiguiente(this.primero);
         this.primero=aux;
     }
     
     
     public void verFila(){
-        Item aux=this.primero;
+        Peticion aux=this.primero;
             while(aux!=null){
-                System.out.print("--> |"+aux.getDireccion()+"|");
+                System.out.print("--> |"+aux.getTIEMPO_TOTAL()+"|");
                 aux=aux.getSiguiente();
             }
         System.out.println();
@@ -44,15 +44,15 @@ public class Fila {
     }
     
     
-    public Item frente(){
+    public Peticion frente(){
             if(this.primero==null){
                 return null;
             }else{
-                Item aux=this.primero;
+                Peticion aux=this.primero;
                 return privateFront(aux);
             }
     }
-    private Item privateFront(Item aux){
+    private Peticion privateFront(Peticion aux){
         if(aux.getSiguiente()==null){
             return aux;
         }else{
@@ -68,7 +68,7 @@ public class Fila {
              if(this.primero.getSiguiente()==null){
                  this.primero=null;
              }else{
-                Item aux=this.primero;
+                Peticion aux=this.primero;
                 while(aux.getSiguiente().getSiguiente()!=null){
                     aux=aux.getSiguiente();
                 }

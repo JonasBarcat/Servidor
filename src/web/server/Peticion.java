@@ -11,20 +11,33 @@ package web.server;
  */
 public class Peticion {
     
-    private int tiempo;
+    private int TIEMPO_TOTAL;
     private int t_in;
+    private Peticion siguiente;
 
-    public Peticion(int tiempo, int t_in) {
-        this.tiempo = tiempo;
+    public Peticion(int TIEMPO_TOTAL, int t_in) {
+        this.TIEMPO_TOTAL = TIEMPO_TOTAL;
         this.t_in = t_in;
+        this.siguiente = null;
     }
 
-    public int getTiempo() {
-        return tiempo;
+ 
+
+    public int getTIEMPO_TOTAL() {
+        return TIEMPO_TOTAL;
     }
 
-    public void setTiempo(int tiempo) {
-        this.tiempo = tiempo;
+    public void setTIEMPO_TOTAL(int TIEMPO_TOTAL) {
+        this.TIEMPO_TOTAL = TIEMPO_TOTAL;
+    }
+   
+
+    public Peticion getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Peticion siguiente) {
+        this.siguiente = siguiente;
     }
 
     public int getT_in() {
@@ -34,6 +47,8 @@ public class Peticion {
     public void setT_in(int t_in) {
         this.t_in = t_in;
     }
+    
+    
     
     
     
