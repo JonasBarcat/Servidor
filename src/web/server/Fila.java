@@ -12,6 +12,8 @@ package web.server;
 public class Fila {
     
     private Peticion primero;
+    
+    private int cantidad=0;
 
     
     public Fila() {
@@ -23,6 +25,7 @@ public class Fila {
         Peticion aux=web;
         aux.setSiguiente(this.primero);
         this.primero=aux;
+        cantidad++;
     }
     
     
@@ -67,12 +70,14 @@ public class Fila {
          }else{
              if(this.primero.getSiguiente()==null){
                  this.primero=null;
+                 cantidad--;
              }else{
                 Peticion aux=this.primero;
                 while(aux.getSiguiente().getSiguiente()!=null){
                     aux=aux.getSiguiente();
                 }
                 aux.setSiguiente(aux.getSiguiente().getSiguiente());
+                cantidad--;
              }
              
          }
@@ -80,7 +85,9 @@ public class Fila {
     
     
     
-    
+    public int cantidad(){
+        return this.cantidad;
+    }
     
     
     
