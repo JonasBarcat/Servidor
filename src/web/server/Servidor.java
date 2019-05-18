@@ -22,21 +22,47 @@ public class Servidor {
        static int esperaMaximoComun;
        static int tiempoInactivo=0;
        
-       static Fila prioridad=new Fila();
-       static Fila comun=new Fila();
-       
+       static Fila prioridad= new Fila();
+       static Fila comun= new Fila();
     
     
     public static void main(String[] args) {
+        // TODO code application logic here
+        
+        Fila nueva=new Fila();
+        
+        if(nueva.esFilaVacia()){
+            System.out.println("Es vacia");
+        }
         
         
-    
-        System.out.println("Solicitudes con prioridad (muestra sus tiempo de proceso) :");
-        prioridad.verFila();
-        System.out.println("Solicitudes comunes (muestra sus tiempo de proceso) :");
-        comun.verFila();
+        Peticion uno=new Peticion(12,12);
+            Peticion dos=new Peticion(13,13);
+                Peticion tres=new Peticion(14,14);
+//        
+//        nueva.enFila(uno);
+         nueva.enFila(dos);
+          nueva.enFila(tres);
+          
+        nueva.verFila();
         
-       
+        
+         if(nueva.esFilaVacia()){
+            System.out.println("Es vacia");
+        }else{   System.out.println("NO es vacia");}
+        
+          System.out.println("Cantidad de peticiones: "+nueva.cantidad());
+        //nueva.deFila();
+        nueva.deFila();
+        nueva.deFila();
+        nueva.verFila();
+        if(nueva.esFilaVacia()){
+            System.out.println("Es vacia");
+        }else{   System.out.println("NO es vacia");}
+        
+        System.out.print("el frente es: "+nueva.Frente().getTIEMPO_TOTAL());
+        
+        System.out.println("Cantidad de peticiones: "+nueva.cantidad());
         
     }
     
@@ -45,23 +71,19 @@ public class Servidor {
     
     
     
-    
-    
-     public static boolean IngresaPeticion(){
+    public static boolean IngresaPeticion(){
          Random numero=new Random();
            if(numero.nextInt(99)==1){
            return true;
            }else return false;
-        }
-     
-       
-     public static boolean EsUsuarioRegistrado(){
+        }   
+    
+    public static boolean EsUsuarioRegistrado(){
          Random numero=new Random();
            if(numero.nextInt(9)==1){
            return true;
            }else return false;
         }
-     
      
      public static Peticion NuevaPeticion(int x){
          Random t_aleatorio=new Random();  // un valor aleatorio entre 50 y 300
@@ -70,40 +92,16 @@ public class Servidor {
          Peticion nueva=new Peticion(aleatorio,x); // genera la peticion y la devuelve
          return nueva;
      }
-     
-     
+    
+    
+    
      public static void procesar(){
+          while(c<TIEMPO_TOTAL){
+          // aqui viene el cuerpo
+          c++;
+          }
      
-         while(c<TIEMPO_TOTAL){
-            if(IngresaPeticion()){  // si hay exito de 1/100 entonces...
-             Peticion nuevapeticion=NuevaPeticion(c);    // creamos la peticion con una cantiad random de t
-                if(EsUsuarioRegistrado()){ // hay un 10% de que sea usuario registrado o no
-                    prioridad.enFila(nuevapeticion);
-                }else{
-                    comun.enFila(nuevapeticion);
-                }
-            }
-            
-            
-//            if(){
-//                
-//            }else{
-//                if(!prioridad.esFilaVacia()){
-//                    enCurso=prioridad.frente().getTIEMPO_TOTAL();
-//                    prioridad.deFila();
-//                    
-//                }else if(!comun.esFilaVacia()){
-//                    enCurso=comun.frente().getTIEMPO_TOTAL();
-//                    comun.deFila();
-//                }else{
-//                tiempoInactivo++;
-//                }        
-//            }        
-       
-        c++;
-        }
-         
      }
-        
+     
     
 }
