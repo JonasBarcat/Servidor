@@ -13,39 +13,30 @@ import java.util.Random;
  */
 public class Servidor {
 
-    /**
-     * @param args the command line arguments
-     */
+    
+       static int TIEMPO_TOTAL=10000; // milisegundos
+       static int c=0;      //cuenta el paso del tiempo
+        
+       static int enCurso;
+       static int esperaMaximoPrioridad;
+       static int esperaMaximoComun;
+       static int tiempoInactivo=0;
+       
+       static Fila prioridad=new Fila();
+       static Fila comun=new Fila();
+       
+    
+    
     public static void main(String[] args) {
         
         
-        int TIEMPO_TOTAL=1000; // milisegundos
-        int c=0;      //cuenta el paso del tiempo
-        
-        int enCurso;
-        int esperaMaximoPrioridad;
-        int esperaMaximoComun;
-        
-        Fila prioridad=new Fila();
-        Fila comun=new Fila();
-          
-        
-        while(c<TIEMPO_TOTAL){
-            if(IngresaPeticion()){  // si hay exito de 1/100 entonces...
-             Peticion nuevapeticion=NuevaPeticion(c);    // creamos la peticion con una cantiad random de t
-                if(EsUsuarioRegistrado()){ // hay un 10% de que sea usuario registrado o no
-                    prioridad.enFila(nuevapeticion);
-                }else{
-                    comun.enFila(nuevapeticion);
-                }
-            }
-       
-        c++;
-        }
     
+        System.out.println("Solicitudes con prioridad (muestra sus tiempo de proceso) :");
+        prioridad.verFila();
+        System.out.println("Solicitudes comunes (muestra sus tiempo de proceso) :");
+        comun.verFila();
         
-        
-        
+       
         
     }
     
@@ -83,6 +74,35 @@ public class Servidor {
      
      public static void procesar(){
      
+         while(c<TIEMPO_TOTAL){
+            if(IngresaPeticion()){  // si hay exito de 1/100 entonces...
+             Peticion nuevapeticion=NuevaPeticion(c);    // creamos la peticion con una cantiad random de t
+                if(EsUsuarioRegistrado()){ // hay un 10% de que sea usuario registrado o no
+                    prioridad.enFila(nuevapeticion);
+                }else{
+                    comun.enFila(nuevapeticion);
+                }
+            }
+            
+            
+//            if(){
+//                
+//            }else{
+//                if(!prioridad.esFilaVacia()){
+//                    enCurso=prioridad.frente().getTIEMPO_TOTAL();
+//                    prioridad.deFila();
+//                    
+//                }else if(!comun.esFilaVacia()){
+//                    enCurso=comun.frente().getTIEMPO_TOTAL();
+//                    comun.deFila();
+//                }else{
+//                tiempoInactivo++;
+//                }        
+//            }        
+       
+        c++;
+        }
+         
      }
         
     
