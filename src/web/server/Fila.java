@@ -25,7 +25,7 @@ public class Fila {
     }
     
     
-    public void enFila(Peticion nueva){
+    public void enFila(Peticion nueva){ 
         if(esFilaVacia()){
             this.Final=nueva;
             this.Frente=nueva;
@@ -36,7 +36,7 @@ public class Fila {
         c++;
     }
     
-    public void verFila(){
+    public void verFila(){ // auxiliar para ir revisando el comportamiento del adt
         Peticion aux=this.Frente;
         while(aux!=null){
             System.out.print(aux.getTIEMPO_TOTAL()+"<--");
